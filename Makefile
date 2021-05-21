@@ -1,19 +1,20 @@
 BUMP := patch  # <major|minor|patch>
 all: install
-.PHONY: all venv requirements publish install
+.PHONY: venv requirements publish all
 SHELL := $(shell command -v bash)
 DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 PACKAGE := $(shell basename $(DIR))
-VENV := $(DIR)/venv
+VENV := $(DIR)venv
+ACTIVATE := $(VENV)/bin/activate
 
 venv:
-	@test -d $(VENV) || @/usr/local/bin/python3.9 -m venv $(VENV)
+	@test -d $(VENV) || @python3.9 -m venv $(VENV)
 
 requirements: venv
-	@$(VENV)/bin/python3.9 -m pip install --upgrade -r $(DIR)requirements_dev.txt
+	@source $(ACTIVATE); python3.9 -m pip install --upgrade -r $(DIR)requirements_dev.txt; deactivate
 
 publish: requirements
-	@gall.sh; bump2version $(BUMP); flit publish; rm -r $(DIR)dist/
+	@source $(ACTIVATE); gall.sh; bump2version $(BUMP); flit publish; rm -r $(DIR)dist/; deactivate
 
 install: publish
-	@/usr/local/bin/python3.9 -m pip install --upgrade $(PACKAGE)
+	@python3.9 -m pip install --upgrade $(PACKAGE)
