@@ -1396,7 +1396,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.24'
+__version__ = '0.0.25'
 
 # Protected
 nested_lookup_protected = _nested_lookup
