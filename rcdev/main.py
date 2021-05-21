@@ -1396,7 +1396,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.17'
+__version__ = '0.0.18'
 
 # Protected
 nested_lookup_protected = _nested_lookup
@@ -1462,6 +1462,7 @@ def pyproject(path: str = str(RcDev.path), pypi: str = RcDev.path.name, script: 
 # Init
 colorama.init()
 getLogger(paramiko.__name__).setLevel(NOTSET)
+environ['PYTHONWARNINGS'] = 'ignore'
 pickle_np.register_handlers()
 pretty_install(expand=True)
 struct_configure(logger_factory=LoggerFactory())
