@@ -75,7 +75,6 @@ import tqdm as tqdm
 import typer as typer
 import urllib3 as urllib3
 import verboselogs as verboselogs
-import wakatime as wakatime
 import xmltodict as xmltodict
 from astpretty import pformat as astformat
 from astpretty import pprint as astprint
