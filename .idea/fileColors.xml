@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SharedFileColors">
+    <fileColor scope="rccmd" color="131d01" />
+    <fileColor scope="Non-Project Files" color="Yellow" />
+    <fileColor scope="rclib" color="05081d" />
+    <fileColor scope="rcdev" color="1d0208" />
+    <fileColor scope="rctest" color="011d19" />
+  </component>
+</project>
