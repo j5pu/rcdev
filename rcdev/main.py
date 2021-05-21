@@ -11,12 +11,328 @@ Examples:
     RecursionError: maximum recursion depth exceeded
 """
 __all__ = (
+    # Imports: StdLib Modules
+    'abc',
+    'ast',
+    'asyncio',
+    'atexit',
+    'collections',
+    'configparser',
+    'contextlib',
+    'contextvars',
+    'copy',
+    'dataclasses',
+    'datetime',
+    'dis',
+    'functools',
+    'grp',
+    'importlib',
+    'importlib_metadata',
+    'importlib_util',
+    'inspect',
+    'io',
+    'itertools',
+    'json',
+    'logging',
+    'operator',
+    'os',
+    'pathlib',
+    'pickle',
+    'pkgutil',
+    'platform',
+    'pwd',
+    'random',
+    're',
+    'reprlib',
+    'shlex',
+    'shutil',
+    'socket',
+    'subprocess',
+    'sys',
+    'sysconfig',
+    'textwrap',
+    'threading',
+    'time',
+    'traceback',
+    'tracemalloc',
+    'tokenize',
+    'types',
+    'urllib',
+    'venv',
+    'warnings',
+    'xml',
+
+    # Imports: StdLib
+    'ABCMeta',
+    'abstractmethod',
+    'AST',
+    'AsyncFor',
+    'AsyncFunctionDef',
+    'AsyncWith',
+    'Await',
+    'ClassDef',
+    'FunctionDef',
+    'get_source_segment',
+    'Import',
+    'ImportFrom',
+    'increment_lineno',
+    'ast_iter_fields',
+    'iter_child_nodes',
+    'Lambda',
+    'NodeVisitor',
+    'astparse',
+    'astunparse',
+    'astwalk',
+    'all_tasks',
+    'as_completed',
+    'BaseEventLoop',
+    'CancelledError',
+    'Condition',
+    'create_subprocess_exec',
+    'create_subprocess_shell',
+    'create_task',
+    'current_task',
+    'ensure_future',
+    'AsyncEvent',
+    'Future',
+    'gather',
+    'get_event_loop',
+    'get_running_loop',
+    'iscoroutine',
+    'isfuture',
+    'AsyncLock',
+    'AsyncQueue',
+    'QueueEmpty',
+    'QueueFull',
+    'asyncrun',
+    'run_coroutine_threadsafe',
+    'Semaphore',
+    'sleep',
+    'AsyncTask',
+    'to_thread',
+    'to_thread',
+    'wrap_future',
+    'new_event_loop',
+    'set_event_loop',
+    'ChainMap',
+    'defaultdict',
+    'deque',
+    'OrderedDict',
+    'AsyncGenerator',
+    'AsyncIterable',
+    'AsyncIterator',
+    'Awaitable',
+    'ByteString',
+    'Callable',
+    'Collection',
+    'Container',
+    'Coroutine',
+    'Generator',
+    'Hashable',
+    'ItemsView',
+    'Iterable',
+    'Iterator',
+    'KeysView',
+    'Mapping',
+    'MappingView',
+    'MutableMapping',
+    'MutableSequence',
+    'MutableSet',
+    'Reversible',
+    'Sequence',
+    'Set',
+    'Sized',
+    'ValuesView',
+    'ProcessPoolExecutor',
+    'ThreadPoolExecutor',
+    'BasicInterpolation',
+    'ConfigParser',
+    'RawConfigParser',
+    'asynccontextmanager',
+    'ContextDecorator',
+    'contextmanager',
+    'suppress',
+    'VarsContext',
+    'ContextVar',
+    'copy_context',
+    'deepcopy',
+    'dataclass',
+    'DataField',
+    'datafield',
+    'datafields',
+    'InitVar',
+    'make_dataclass',
+    'timedelta',
+    'auto',
+    'Enum',
+    'EnumMeta',
+    'cached_property',
+    'partial',
+    'partialmethod',
+    'singledispatch',
+    'singledispatchmethod',
+    'total_ordering',
+    'wraps',
+    'import_module',
+    'BYTECODE_SUFFIXES',
+    'ImportLibDistribution',
+    'importlib_distribution',
+    'PackageNotFoundError',
+    'module_from_spec',
+    'spec_from_file_location',
+    'InsAttribute',
+    'classify_class_attrs',
+    'currentframe',
+    'getfile',
+    'getmodule',
+    'getmodulename',
+    'getsource',
+    'getsourcefile',
+    'getsourcelines',
+    'FrameInfo',
+    'isasyncgenfunction',
+    'isawaitable',
+    'iscoroutinefunction',
+    'isgeneratorfunction',
+    'isgetsetdescriptor',
+    'ismemberdescriptor',
+    'ismethoddescriptor',
+    'isroutine',
+    'insstack',
+    'BufferedRandom',
+    'BufferedReader',
+    'BufferedWriter',
+    'BytesIO',
+    'FileIO',
+    'StringIO',
+    'TextIOWrapper',
+    'JSONEncoder',
+    'JSONDecodeError',
+    'addLevelName',
+    'basicConfig',
+    'CRITICAL',
+    'DEBUG',
+    'ERROR',
+    'FileHandler',
+    'LoggingFormatter',
+    'getLevelName',
+    'getLogger',
+    'getLoggerClass',
+    'Handler',
+    'INFO',
+    'Logger',
+    'LoggerAdapter',
+    'NOTSET',
+    'setLoggerClass',
+    'StreamHandler',
+    'WARNING',
+    'RotatingFileHandler',
+    'TimedRotatingFileHandler',
+    'attrgetter',
+    'contains',
+    'itemgetter',
+    'methodcaller',
+    'chdir',
+    'environ',
+    'getenv',
+    'PathLike',
+    'system',
+    'PathLib',
+    'pickle_dump',
+    'pickle_dumps',
+    'pickle_load',
+    'pickle_loads',
+    'PicklingError',
+    'iter_modules',
+    'platform_processor',
+    'python_version_tuple',
+    'recursive_repr',
+    'shquote',
+    'shsplit',
+    'chown',
+    'shcopy',
+    'shcopy2',
+    'copyfile',
+    'copymode',
+    'copystat',
+    'copytree',
+    'get_terminal_size',
+    'rmtree',
+    'getsitepackages',
+    'USER_SITE',
+    'gaierror',
+    'getfqdn',
+    'gethostbyname',
+    'gethostname',
+    'socket_timeout',
+    'CompletedProcess',
+    'subrun',
+    'sys_base_executable',
+    'sys_current_frames',
+    'sys_getframe',
+    'sys_base_exec_prefix',
+    'builtin_module_names',
+    'sys_base_prefix',
+    'sys_exc_info',
+    'sys_executable',
+    'sys_exec_prefix',
+    'getsizeof',
+    'sys_meta_path',
+    'sys_modules',
+    'sys_path',
+    'sys_path_hooks',
+    'sys_platform',
+    'sys_platlibdir',
+    'sys_prefix',
+    'sys_thread_info',
+    'sysconfig_path',
+    'sysconfig_paths',
+    'TemporaryDirectory',
+    'ThreadLock',
+    'timeit',
+    'extract_stack',
+    'AsyncGeneratorType',
+    'BuiltinFunctionType',
+    'BuiltinMethodType',
+    'ClassMethodDescriptorType',
+    'CodeType',
+    'CoroutineType',
+    'DynamicClassAttribute',
+    'FrameType',
+    'FunctionType',
+    'GeneratorType',
+    'GenericAlias',
+    'GetSetDescriptorType',
+    'LambdaType',
+    'MappingProxyType',
+    'MemberDescriptorType',
+    'MethodType',
+    'MethodWrapperType',
+    'ModuleType',
+    'Simple',
+    'TracebackType',
+    'WrapperDescriptorType',
+    'cast',
+    'get_args',
+    'get_origin',
+    'get_type_hints',
+    'runtime_checkable',
+    'HTTPError',
+    'URLError',
+    'urllib_open',
+    'EnvBuilder',
+    'catch_warnings',
+    'filterwarnings',
+    'simplefilter',
+    'ExpatError',
+
     # Imports: PyPi - Modules
     'ansible',
     'astpretty',
     'asttokens',
     'box',
     'bson',
+    'build',
     'click',
     'click_completion',
     'colorama',
@@ -82,6 +398,7 @@ __all__ = (
     'tqdm',
     'urllib3',
     'verboselogs',
+    'wheel',
     'xmltodict',
 
     # Beta
@@ -114,6 +431,31 @@ __all__ = (
     'USER_DEFINED_SUBTYPE',
     'TypeDecoder',
     'TypeRegistry',
+    'TyperGroup',
+    'TyperAbort',
+    'TyperBadParameter',
+    'TyperExit',
+    'typer_clear',
+    'typer_confirm',
+    'echo_via_pager',
+    'typer_edit',
+    'typer_get_terminal_size',
+    'typer_getchar',
+    'typer_launch',
+    'typer_pause',
+    'typer_progressbar',
+    'typer_prompt',
+    'secho',
+    'typer_style',
+    'typer_unstyle',
+    'CliRunner',
+    'TyperResult',
+    'typer_echo',
+    'typer_format_filename',
+    'typer_get_app_dir',
+    'get_binary_stream',
+    'get_text_stream',
+    'typer_open_file',
     'ColoredFormatter',
     'LevelFormatter',
     'decorator',
@@ -175,14 +517,14 @@ __all__ = (
     'AsyncIOMotorDatabase',
     'nested_lookup',
     'nested_lookup_protected',
-    'AuthenticationException',
     'AutoAddPolicy',
-    'BadAuthenticationType',
-    'BadHostKeyException',
-    'PasswordRequiredException',
-    'NoValidConnectionsError',
     'SSHClient',
     'SSHConfig',
+    'AuthenticationException',
+    'BadAuthenticationType',
+    'BadHostKeyException',
+    'NoValidConnectionsError',
+    'PasswordRequiredException',
     'SSHException',
     'AccessDenied',
     'LINUX',
@@ -325,6 +667,17 @@ __all__ = (
     'toolz_valfilter',
     'toolz_valmap',
     'asynctqdm',
+    'TyperArgument',
+    'TyperCallbackParam',
+    'typer_colors',
+    'TyperContext',
+    'TyperFileBinaryRead',
+    'TyperFileBinaryWrite',
+    'TyperFileText',
+    'TyperFileTextWrite',
+    'TyperOption',
+    'typer_run',
+    'Typer',
     'urllib3_disable_warnings',
     'var_name',
     'NOTICE',
@@ -359,20 +712,335 @@ __all__ = (
 
     # Install
     'pretty_install',
-    'traceback_install'
+    'traceback_install',
+    
+    # Class
+    'RcDev',
 
 )
 
-from logging import getLogger
-from logging import NOTSET
-from socket import gaierror
-from typing import Union
+# Imports: StdLib Modules
+import ast as ast
+import asyncio as asyncio
+import atexit as atexit
+import collections as collections
+import collections.abc as abc
+import configparser as configparser
+import contextlib as contextlib
+import contextvars as contextvars
+import copy as copy
+import dataclasses as dataclasses
+import datetime as datetime
+import dis as dis
+import functools as functools
+# noinspection PyCompatibility
+import grp as grp
+import importlib as importlib
+import importlib.metadata as importlib_metadata
+import importlib.util as importlib_util
+import inspect as inspect
+import io as io
+import itertools as itertools
+import json as json
+import logging as logging
+import operator as operator
+import os as os
+import pathlib as pathlib
+import pickle as pickle
+import pkgutil as pkgutil
+import platform as platform
+# noinspection PyCompatibility
+import pwd as pwd
+import random as random
+import re as re
+import reprlib as reprlib
+import shlex as shlex
+import shutil as shutil
+import socket as socket
+import subprocess as subprocess
+import sys as sys
+import sysconfig as sysconfig
+import textwrap as textwrap
+import threading as threading
+import time as time
+import tokenize as tokenize
+import traceback as traceback
+import tracemalloc as tracemalloc
+import types as types
+import urllib as urllib
+import venv as venv
+import warnings as warnings
+import xml as xml
+
+# Imports: StdLib
+from abc import ABCMeta as ABCMeta
+from abc import abstractmethod as abstractmethod
+from ast import AST as AST
+from ast import AsyncFor as AsyncFor
+from ast import AsyncFunctionDef as AsyncFunctionDef
+from ast import AsyncWith as AsyncWith
+from ast import Await as Await
+from ast import ClassDef as ClassDef
+from ast import FunctionDef as FunctionDef
+from ast import get_source_segment as get_source_segment
+from ast import Import as Import
+from ast import ImportFrom as ImportFrom
+from ast import increment_lineno as increment_lineno
+from ast import iter_child_nodes as iter_child_nodes
+from ast import iter_fields as ast_iter_fields
+from ast import Lambda as Lambda
+from ast import NodeVisitor as NodeVisitor
+from ast import parse as astparse
+from ast import unparse as astunparse
+from ast import walk as astwalk
+from asyncio import all_tasks as all_tasks
+from asyncio import as_completed as as_completed
+from asyncio import BaseEventLoop as BaseEventLoop
+from asyncio import CancelledError as CancelledError
+from asyncio import Condition as Condition
+from asyncio import create_subprocess_exec as create_subprocess_exec
+from asyncio import create_subprocess_shell as create_subprocess_shell
+from asyncio import create_task as create_task
+from asyncio import current_task as current_task
+from asyncio import ensure_future as ensure_future
+from asyncio import Event as AsyncEvent
+from asyncio import Future as Future
+from asyncio import gather as gather
+from asyncio import get_event_loop as get_event_loop
+from asyncio import get_running_loop as get_running_loop
+from asyncio import iscoroutine as iscoroutine
+from asyncio import isfuture as isfuture
+from asyncio import Lock as AsyncLock
+from asyncio import Queue as AsyncQueue
+from asyncio import QueueEmpty as QueueEmpty
+from asyncio import QueueFull as QueueFull
+from asyncio import run as asyncrun
+from asyncio import run_coroutine_threadsafe as run_coroutine_threadsafe
+from asyncio import Semaphore as Semaphore
+from asyncio import sleep as sleep
+from asyncio import Task as AsyncTask
+from asyncio import to_thread as to_thread
+from asyncio import wrap_future as wrap_future
+from asyncio.events import new_event_loop as new_event_loop
+from asyncio.events import set_event_loop as set_event_loop
+from collections import ChainMap as ChainMap
+from collections import defaultdict as defaultdict
+from collections import deque as deque
+from collections import OrderedDict as OrderedDict
+from collections.abc import AsyncGenerator as AsyncGenerator
+from collections.abc import AsyncIterable as AsyncIterable
+from collections.abc import AsyncIterator as AsyncIterator
+from collections.abc import Awaitable as Awaitable
+from collections.abc import ByteString as ByteString
+from collections.abc import Callable as Callable
+from collections.abc import Collection as Collection
+from collections.abc import Container as Container
+from collections.abc import Coroutine as Coroutine
+from collections.abc import Generator as Generator
+from collections.abc import Hashable as Hashable
+from collections.abc import ItemsView as ItemsView
+from collections.abc import Iterable as Iterable
+from collections.abc import Iterator as Iterator
+from collections.abc import KeysView as KeysView
+from collections.abc import Mapping as Mapping
+from collections.abc import MappingView as MappingView
+from collections.abc import MutableMapping as MutableMapping
+from collections.abc import MutableSequence as MutableSequence
+from collections.abc import MutableSet as MutableSet
+from collections.abc import Reversible as Reversible
+from collections.abc import Sequence as Sequence
+from collections.abc import Set as Set
+from collections.abc import Sized as Sized
+from collections.abc import ValuesView as ValuesView
+from concurrent.futures.process import ProcessPoolExecutor as ProcessPoolExecutor
+from concurrent.futures.thread import ThreadPoolExecutor as ThreadPoolExecutor
+from configparser import BasicInterpolation as BasicInterpolation
+from configparser import ConfigParser as ConfigParser
+from configparser import RawConfigParser as RawConfigParser
+from contextlib import asynccontextmanager as asynccontextmanager
+from contextlib import ContextDecorator as ContextDecorator
+from contextlib import contextmanager as contextmanager
+from contextlib import suppress as suppress
+from contextvars import Context as VarsContext
+from contextvars import ContextVar as ContextVar
+from contextvars import copy_context as copy_context
+from copy import deepcopy as deepcopy
+from dataclasses import dataclass as dataclass
+from dataclasses import Field as DataField
+from dataclasses import field as datafield
+from dataclasses import fields as datafields
+from dataclasses import InitVar as InitVar
+from dataclasses import make_dataclass as make_dataclass
+from datetime import timedelta as timedelta
+from enum import auto as auto
+from enum import Enum as Enum
+from enum import EnumMeta as EnumMeta
+from functools import cached_property as cached_property
+from functools import partial as partial
+from functools import partialmethod as partialmethod
+from functools import singledispatch as singledispatch
+from functools import singledispatchmethod as singledispatchmethod
+from functools import total_ordering as total_ordering
+from functools import wraps as wraps
+from importlib import import_module as import_module
+from importlib.machinery import BYTECODE_SUFFIXES as BYTECODE_SUFFIXES
+from importlib.metadata import distribution as importlib_distribution
+from importlib.metadata import Distribution as ImportLibDistribution
+from importlib.metadata import PackageNotFoundError as PackageNotFoundError
+from importlib.util import module_from_spec as module_from_spec
+from importlib.util import spec_from_file_location as spec_from_file_location
+from inspect import Attribute as InsAttribute
+from inspect import classify_class_attrs as classify_class_attrs
+from inspect import currentframe as currentframe
+from inspect import getfile as getfile
+from inspect import getmodule as getmodule
+from inspect import getmodulename as getmodulename
+from inspect import getsource as getsource
+from inspect import getsourcefile as getsourcefile
+from inspect import getsourcelines as getsourcelines
+from inspect import FrameInfo as FrameInfo
+from inspect import isasyncgenfunction as isasyncgenfunction
+from inspect import isawaitable as isawaitable
+from inspect import iscoroutinefunction as iscoroutinefunction
+from inspect import isgeneratorfunction as isgeneratorfunction
+from inspect import isgetsetdescriptor as isgetsetdescriptor
+from inspect import ismemberdescriptor as ismemberdescriptor
+from inspect import ismethoddescriptor as ismethoddescriptor
+from inspect import isroutine as isroutine
+from inspect import stack as insstack
+from io import BufferedRandom as BufferedRandom
+from io import BufferedReader as BufferedReader
+from io import BufferedWriter as BufferedWriter
+from io import BytesIO as BytesIO
+from io import FileIO as FileIO
+from io import StringIO as StringIO
+from io import TextIOWrapper as TextIOWrapper
+from json import JSONEncoder as JSONEncoder
+from json.decoder import JSONDecodeError as JSONDecodeError
+from logging import addLevelName as addLevelName
+from logging import basicConfig as basicConfig
+from logging import CRITICAL as CRITICAL
+from logging import DEBUG as DEBUG
+from logging import ERROR as ERROR
+from logging import FileHandler as FileHandler
+from logging import Formatter as LoggingFormatter
+from logging import getLevelName as getLevelName
+from logging import getLogger as getLogger
+from logging import getLoggerClass as getLoggerClass
+from logging import Handler as Handler
+from logging import INFO as INFO
+from logging import Logger as Logger
+from logging import LoggerAdapter as LoggerAdapter
+from logging import NOTSET as NOTSET
+from logging import setLoggerClass as setLoggerClass
+from logging import StreamHandler as StreamHandler
+from logging import WARNING as WARNING
+from logging.handlers import RotatingFileHandler as RotatingFileHandler
+from logging.handlers import TimedRotatingFileHandler as TimedRotatingFileHandler
+from operator import attrgetter as attrgetter
+from operator import contains as contains
+from operator import itemgetter as itemgetter
+from operator import methodcaller as methodcaller
+from os import chdir as chdir
+from os import environ as environ
+from os import getenv as getenv
+from os import PathLike as PathLike
+from os import system as system
+from pathlib import Path as PathLib
+from pickle import dump as pickle_dump
+from pickle import dumps as pickle_dumps
+from pickle import load as pickle_load
+from pickle import loads as pickle_loads
+from pickle import PicklingError as PicklingError
+from pkgutil import iter_modules as iter_modules
+from platform import processor as platform_processor
+from platform import python_version_tuple as python_version_tuple
+from reprlib import recursive_repr as recursive_repr
+from shlex import quote as shquote
+from shlex import split as shsplit
+from shutil import chown as chown
+from shutil import copy as shcopy
+from shutil import copy2 as shcopy2
+from shutil import copyfile as copyfile
+from shutil import copymode as copymode
+from shutil import copystat as copystat
+from shutil import copytree as copytree
+from shutil import get_terminal_size as get_terminal_size
+from shutil import rmtree as rmtree
+from site import getsitepackages as getsitepackages
+from site import USER_SITE as USER_SITE
+from socket import gaierror as gaierror
+from socket import getfqdn as getfqdn
+from socket import gethostbyname as gethostbyname
+from socket import gethostname as gethostname
+from socket import timeout as socket_timeout
+from subprocess import CompletedProcess as CompletedProcess
+from subprocess import run as subrun
+from sys import _base_executable as sys_base_executable
+from sys import _current_frames as sys_current_frames
+from sys import _getframe as sys_getframe
+from sys import base_exec_prefix as sys_base_exec_prefix
+from sys import base_prefix as sys_base_prefix
+from sys import builtin_module_names as builtin_module_names
+from sys import exc_info as sys_exc_info
+from sys import exec_prefix as sys_exec_prefix
+from sys import executable as sys_executable
+from sys import getsizeof as getsizeof
+from sys import meta_path as sys_meta_path
+from sys import modules as sys_modules
+from sys import path as sys_path
+from sys import path_hooks as sys_path_hooks
+from sys import platform as sys_platform
+from sys import platlibdir as sys_platlibdir
+from sys import prefix as sys_prefix
+from sys import thread_info as sys_thread_info
+from sysconfig import get_path as sysconfig_path
+from sysconfig import get_paths as sysconfig_paths
+from tempfile import TemporaryDirectory as TemporaryDirectory
+from threading import Lock as ThreadLock
+from timeit import timeit as timeit
+from traceback import extract_stack as extract_stack
+from types import AsyncGeneratorType as AsyncGeneratorType
+from types import BuiltinFunctionType as BuiltinFunctionType
+from types import BuiltinMethodType as BuiltinMethodType
+from types import ClassMethodDescriptorType as ClassMethodDescriptorType
+from types import CodeType as CodeType
+from types import CoroutineType as CoroutineType
+from types import DynamicClassAttribute as DynamicClassAttribute
+from types import FrameType as FrameType
+from types import FunctionType as FunctionType
+from types import GeneratorType as GeneratorType
+from types import GenericAlias as GenericAlias
+from types import GetSetDescriptorType as GetSetDescriptorType
+from types import LambdaType as LambdaType
+from types import MappingProxyType as MappingProxyType
+from types import MemberDescriptorType as MemberDescriptorType
+from types import MethodType as MethodType
+from types import MethodWrapperType as MethodWrapperType
+from types import ModuleType as ModuleType
+from types import SimpleNamespace as Simple
+from types import TracebackType as TracebackType
+from types import WrapperDescriptorType as WrapperDescriptorType
+from typing import cast as cast
+from typing import ClassVar
+from typing import get_args as get_args
+from typing import get_origin as get_origin
+from typing import get_type_hints as get_type_hints
+from typing import runtime_checkable as runtime_checkable
+from urllib.error import HTTPError as HTTPError
+from urllib.error import URLError as URLError
+from urllib.request import urlopen as urllib_open
+from venv import EnvBuilder as EnvBuilder
+from warnings import catch_warnings as catch_warnings
+from warnings import filterwarnings as filterwarnings
+from warnings import simplefilter as simplefilter
+from xml.parsers.expat import ExpatError as ExpatError
 
 import ansible as ansible
 import astpretty as astpretty
 import asttokens as asttokens
-import bson as bson
 import box as box
+import bson as bson
 import build as build
 import click as click
 import click_completion as click_completion
@@ -452,6 +1120,31 @@ from bson import ObjectId as ObjectId
 from bson.binary import USER_DEFINED_SUBTYPE as USER_DEFINED_SUBTYPE
 from bson.codec_options import TypeDecoder as TypeDecoder
 from bson.codec_options import TypeRegistry as TypeRegistry
+from click.decorators import Group as TyperGroup
+from click.exceptions import Abort as TyperAbort
+from click.exceptions import BadParameter as TyperBadParameter
+from click.exceptions import Exit as TyperExit
+from click.termui import clear as typer_clear
+from click.termui import confirm as typer_confirm
+from click.termui import echo_via_pager as echo_via_pager
+from click.termui import edit as typer_edit
+from click.termui import get_terminal_size as typer_get_terminal_size
+from click.termui import getchar as typer_getchar
+from click.termui import launch as typer_launch
+from click.termui import pause as typer_pause
+from click.termui import progressbar as typer_progressbar
+from click.termui import prompt as typer_prompt
+from click.termui import secho as secho
+from click.termui import style as typer_style
+from click.termui import unstyle as typer_unstyle
+from click.testing import CliRunner as CliRunner
+from click.testing import Result as TyperResult
+from click.utils import echo as typer_echo
+from click.utils import format_filename as typer_format_filename
+from click.utils import get_app_dir as typer_get_app_dir
+from click.utils import get_binary_stream as get_binary_stream
+from click.utils import get_text_stream as get_text_stream
+from click.utils import open_file as typer_open_file
 from colorlog import ColoredFormatter as ColoredFormatter
 from colorlog import LevelFormatter as LevelFormatter
 from decorator import decorator as decorator
@@ -513,15 +1206,15 @@ from motor.motor_asyncio import AsyncIOMotorCursor as AsyncIOMotorCursor
 from motor.motor_asyncio import AsyncIOMotorDatabase as AsyncIOMotorDatabase
 from nested_lookup import nested_lookup as nested_lookup
 from nested_lookup.nested_lookup import _nested_lookup
-from paramiko import AuthenticationException as AuthenticationException
-from paramiko import AutoAddPolicy as AutoAddPolicy
-from paramiko import BadAuthenticationType as BadAuthenticationType
-from paramiko import BadHostKeyException as BadHostKeyException
-from paramiko import PasswordRequiredException as PasswordRequiredException
-from paramiko import SSHClient as SSHClient
-from paramiko import SSHConfig as SSHConfig
-from paramiko import SSHException as SSHException
+from paramiko.client import AutoAddPolicy as AutoAddPolicy
+from paramiko.client import SSHClient as SSHClient
+from paramiko.config import SSHConfig as SSHConfig
+from paramiko.ssh_exception import AuthenticationException as AuthenticationException
+from paramiko.ssh_exception import BadAuthenticationType as BadAuthenticationType
+from paramiko.ssh_exception import BadHostKeyException as BadHostKeyException
 from paramiko.ssh_exception import NoValidConnectionsError as NoValidConnectionsError
+from paramiko.ssh_exception import PasswordRequiredException as PasswordRequiredException
+from paramiko.ssh_exception import SSHException as SSHException
 from psutil import AccessDenied as AccessDenied
 from psutil import LINUX as LINUX
 from psutil import MACOS as MACOS
@@ -662,6 +1355,17 @@ from toolz.dicttoolz import update_in as toolz_update_in
 from toolz.dicttoolz import valfilter as toolz_valfilter
 from toolz.dicttoolz import valmap as toolz_valmap
 from tqdm.asyncio import tqdm as asynctqdm
+from typer import Argument as TyperArgument
+from typer import CallbackParam as TyperCallbackParam
+from typer import colors as typer_colors
+from typer import Context as TyperContext
+from typer import FileBinaryRead as TyperFileBinaryRead
+from typer import FileBinaryWrite as TyperFileBinaryWrite
+from typer import FileText as TyperFileText
+from typer import FileTextWrite as TyperFileTextWrite
+from typer import Option as TyperOption
+from typer import run as typer_run
+from typer import Typer as Typer
 from urllib3 import disable_warnings as urllib3_disable_warnings
 from varname import varname as var_name
 from verboselogs import NOTICE as NOTICE
@@ -688,8 +1392,11 @@ import snoop as snoop
 import sorcery as sorcery
 import stack_data as stack_data
 import ujson as ujson
+
+from typing import Union
+
 # Constants
-__version__ = '0.0.11'
+__version__ = '0.0.12'
 
 # Protected
 nested_lookup_protected = _nested_lookup
@@ -726,8 +1433,22 @@ def traceback_install(cons=console, extra=5, locs=True): return rich_traceback.i
 
 
 # Class
-class PyProject:
-    pass
+@dataclass
+class RcDev:
+    path: PathLib = PathLib(__file__).parent.parent
+    pypi: str = None
+    script: str = None
+    python: ClassVar[str] = '3.9'
+    requires: list[str, ...] = datafield(default_factory=list, init=False)
+
+    def __post_init__(self):
+        path = PathLib(self.path); self.path = path if path.is_dir() else path.parent
+        self.pypi = self.pypi if self.pypi else self.path.name
+        self.script = self.script if self.script else self.pypi
+        self.requires = sorted((self.path / 'requirements.txt').read_text().splitlines())
+
+    def pyproject(self): Template(PathLib(__file__).parent / 'pyproject.toml.j2', autoescape=True).stream(self).dump(
+        self.path / 'pyproject.toml')
 
 
 # Init
@@ -737,6 +1458,3 @@ pickle_np.register_handlers()
 pretty_install(expand=True)
 struct_configure(logger_factory=LoggerFactory())
 urllib3_disable_warnings()
-
-if __name__ == '__main__':
-    PyProject()
