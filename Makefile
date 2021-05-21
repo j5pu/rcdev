@@ -1,15 +1,11 @@
 BUMP := patch  # <major|minor|patch>
-all: rcdev
+all: rclib
 .PHONY: rcdev rctest rccmd rclib all
 SHELL := $(shell command -v bash)
 DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 PACKAGE := $(shell basename $(DIR))
 VENV := $(DIR)venv
 ACTIVATE := $(VENV)/bin/activate
-
-#RCCMD = $${HOME}/rccmd
-#RCLIB = $${HOME}/rclib
-#RCTEST = $${HOME}/rctest
 
 rcdev:
 	@test -d $(VENV) || @python3.9 -m venv $(VENV)
@@ -25,5 +21,5 @@ rctest: rcdev
 rccmd: rctest
 	@cd $${HOME}/rccmd; make
 
-rclib: rctest
+rclib: rccmd
 	@cd $${HOME}/rclib; make
