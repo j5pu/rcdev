@@ -3,16 +3,15 @@ requires = ['flit_core >=2,<4']
 build-backend = 'flit_core.buildapi'
 
 [tool.flit.metadata]
-module = {{ rcdev.pypi }}
+module = '{{ pypi }}'
 author = 'José'
 classifiers = [ 'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',]
 description-file = 'README.md'
 requires = [
-{% for item in rcdev.requirements %}
-    '{{ item }}',
-{%  endfor %}
-]
-requires-python=">={{ rcdev.python }}"
+{% for item in requires %}{% if item != '' and '#' not in item %}    '{{ item }}',
+{%  endif %}{%  endfor %}]
+requires-python='>={{ python }}'
+
 [tool.flit.scripts]
-{{ rcdev.script }} = '{{ rcdev.script }}:app'
+{{ script }} = '{{ script }}:app'
 

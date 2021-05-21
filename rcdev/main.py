@@ -1,6 +1,7 @@
+#!/usr/bin/env python3.9
 # -*- coding: utf-8 -*-
 """
-Imports Module.
+Dev Module.
 
 Examples:
     >>> from copy import deepcopy
@@ -1022,7 +1023,6 @@ from types import SimpleNamespace as Simple
 from types import TracebackType as TracebackType
 from types import WrapperDescriptorType as WrapperDescriptorType
 from typing import cast as cast
-from typing import ClassVar
 from typing import get_args as get_args
 from typing import get_origin as get_origin
 from typing import get_type_hints as get_type_hints
@@ -1396,7 +1396,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.13'
+__version__ = '0.0.14'
 
 # Protected
 nested_lookup_protected = _nested_lookup
@@ -1433,22 +1433,30 @@ def traceback_install(cons=console, extra=5, locs=True): return rich_traceback.i
 
 
 # Class
-@dataclass
 class RcDev:
-    path: PathLib = PathLib(__file__).parent.parent
-    pypi: str = None
-    script: str = None
-    python: ClassVar[str] = '3.9'
-    requires: list[str, ...] = datafield(default_factory=list, init=False)
+    path = PathLib(__file__).parent.parent
+    python = '3.9'
 
-    def __post_init__(self):
-        path = PathLib(self.path); self.path = path if path.is_dir() else path.parent
-        self.pypi = self.pypi if self.pypi else self.path.name
-        self.script = self.script if self.script else self.pypi
-        self.requires = sorted((self.path / 'requirements.txt').read_text().splitlines())
+    def __init__(self, path=path, pypi=None, script=None):
+        path = PathLib(path); self.path = path if path.is_dir() else path.parent
+        self.pypi = pypi if pypi else path.name
+        self.script = script if script else pypi
+        requirements = self.path / 'requirements.txt'
+        self.requires = sorted(set((self.path / 'requirements.txt').read_text().splitlines()))
+        requirements.write_text('\n'.join(self.requires))
 
-    def pyproject(self): Template(PathLib(__file__).parent / 'pyproject.toml.j2', autoescape=True).stream(self).dump(
-        self.path / 'pyproject.toml')
+    def pyproject(self): Template((PathLib(__file__).parent / 'pyproject.toml.j2').read_text(), autoescape=True).stream(
+        **vars(self) | vars(type(self))).dump(str(self.path / 'pyproject.toml'))
+
+
+# App
+app = Typer(context_settings=dict(help_option_names=['-h', '--help'], color=True))
+
+
+@app.command()
+def pyproject(path: str = str(RcDev.path), pypi: str = RcDev.path.name, script: str = RcDev.path.name):
+    """pyproject.toml"""
+    RcDev(path=path, pypi=pypi, script=script).pyproject()
 
 
 # Init
@@ -1458,3 +1466,10 @@ pickle_np.register_handlers()
 pretty_install(expand=True)
 struct_configure(logger_factory=LoggerFactory())
 urllib3_disable_warnings()
+
+if __name__ == '__main__':
+    try:
+        TyperExit(app())
+    except KeyboardInterrupt:
+        print('Aborted!')
+        TyperExit()
