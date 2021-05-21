@@ -14,6 +14,7 @@ ACTIVATE := $(VENV)/bin/activate
 rcdev:
 	@test -d $(VENV) || @python3.9 -m venv $(VENV)
 	@source $(ACTIVATE); $(VENV)/bin/python3.9 -m pip install --upgrade -q -r $(DIR)requirements.txt; deactivate
+	@source $(ACTIVATE); $(VENV)/bin/python3.9 -m rcdev; deactivate
 	@source $(ACTIVATE); bump2version $(BUMP); gpush.sh; flit publish; rm -rf $(DIR)dist/; deactivate
 	@deactivate >/dev/null 2>&1; /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE); \
 /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE)
