@@ -1396,7 +1396,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.19'
+__version__ = '0.0.20'
 
 # Protected
 nested_lookup_protected = _nested_lookup
@@ -1462,13 +1462,13 @@ def pyproject(path: str = str(RcDev.path), pypi: str = RcDev.path.name, script: 
 # Init
 colorama.init()
 getLogger(paramiko.__name__).setLevel(NOTSET)
-environ['PYTHONWARNINGS'] = 'ignore'
 pickle_np.register_handlers()
 pretty_install(expand=True)
 struct_configure(logger_factory=LoggerFactory())
 urllib3_disable_warnings()
 
 if __name__ == '__main__':
+    environ['PYTHONWARNINGS'] = 'ignore'
     try:
         TyperExit(app())
     except KeyboardInterrupt:
