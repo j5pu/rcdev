@@ -11,10 +11,11 @@ venv:
 	@test -d $(VENV) || @python3.9 -m venv $(VENV)
 
 requirements: venv
-	@source $(ACTIVATE); python3.9 -m pip install --upgrade -r $(DIR)requirements_dev.txt; deactivate
+	@source $(ACTIVATE); $(VENV)/bin/python3.9 -m pip install --upgrade -q -r $(DIR)requirements_dev.txt; deactivate
 
 publish: requirements
-	@source $(ACTIVATE); gall.sh; bump2version $(BUMP); flit publish; rm -r $(DIR)dist/; deactivate
+	@source $(ACTIVATE); bump2version $(BUMP); gpush.sh; flit publish; rm -rf $(DIR)dist/; deactivate
 
 install: publish
-	@python3.9 -m pip install --upgrade $(PACKAGE)
+	@deactivate >/dev/null 2>&1; /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE); \
+/usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE)

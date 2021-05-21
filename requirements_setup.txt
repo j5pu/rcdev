@@ -1,2 +1,4 @@
 bump2version
 flit
+pip
+wheel

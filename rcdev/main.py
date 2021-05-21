@@ -687,7 +687,7 @@ import sorcery as sorcery
 import stack_data as stack_data
 import ujson as ujson
 # Constants
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 # Protected
 nested_lookup_protected = _nested_lookup
