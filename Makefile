@@ -1,6 +1,6 @@
 BUMP := patch  # <major|minor|patch>
 all: rcdev
-.PHONY: rcdev all
+.PHONY: rcdev rctest rccmd rclib all
 SHELL := $(shell command -v bash)
 DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 PACKAGE := $(shell basename $(DIR))
@@ -13,7 +13,7 @@ ACTIVATE := $(VENV)/bin/activate
 
 rcdev:
 	@test -d $(VENV) || @python3.9 -m venv $(VENV)
-	@source $(ACTIVATE); $(VENV)/bin/python3.9 -m pip install --upgrade -q -r $(DIR)requirements_dev.txt; deactivate
+	@source $(ACTIVATE); $(VENV)/bin/python3.9 -m pip install --upgrade -q -r $(DIR)requirements.txt; deactivate
 	@source $(ACTIVATE); bump2version $(BUMP); gpush.sh; flit publish; rm -rf $(DIR)dist/; deactivate
 	@deactivate >/dev/null 2>&1; /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE); \
 /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE)
