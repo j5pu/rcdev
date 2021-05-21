@@ -1,6 +1,7 @@
 ansible
 astpretty
 asttokens
+build
 python-box[all]
 click
 click_completion
@@ -101,3 +102,4 @@ snoop
 sorcery
 stack_data
 ujson
+wheel

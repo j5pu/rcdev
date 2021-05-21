@@ -11,6 +11,7 @@ requires = [
     'ansible',
     'astpretty',
     'asttokens',
+    'paramiko',
     'python-box[all]',
     'click',
     'click_completion',

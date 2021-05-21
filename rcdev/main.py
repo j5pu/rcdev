@@ -373,6 +373,7 @@ import astpretty as astpretty
 import asttokens as asttokens
 import bson as bson
 import box as box
+import build as build
 import click as click
 import click_completion as click_completion
 import colorama as colorama
@@ -439,6 +440,7 @@ import tqdm as tqdm
 import typer as typer
 import urllib3 as urllib3
 import verboselogs as verboselogs
+import wheel as wheel
 import xmltodict as xmltodict
 from astpretty import pformat as astformat
 from astpretty import pprint as astprint
@@ -687,7 +689,7 @@ import sorcery as sorcery
 import stack_data as stack_data
 import ujson as ujson
 # Constants
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 
 # Protected
 nested_lookup_protected = _nested_lookup
@@ -709,6 +711,7 @@ icc = IceCreamDebugger(prefix=str(), includeContext=True)
 IPvAddress = Union[IPv4Address, IPv6Address]
 KALI = DISTRO.id() == 'kali'
 MONGO_EXCEPTIONS = (gaierror, ConnectionFailure, AutoReconnect, ServerSelectionTimeoutError, ConfigurationError,)
+plural = inflect.engine().plural
 print_exception = console.print_exception
 PYTHON_VERSIONS = (VersionInfo(3, 9), VersionInfo(3, 10), )
 UBUNTU = DISTRO.id() == 'ubuntu'
@@ -722,11 +725,18 @@ def traceback_install(cons=console, extra=5, locs=True): return rich_traceback.i
     console=cons, extra_lines=extra, show_locals=locs)
 
 
+# Class
+class PyProject:
+    pass
+
+
 # Init
 colorama.init()
 getLogger(paramiko.__name__).setLevel(NOTSET)
-plural = inflect.engine().plural
 pickle_np.register_handlers()
 pretty_install(expand=True)
 struct_configure(logger_factory=LoggerFactory())
 urllib3_disable_warnings()
+
+if __name__ == '__main__':
+    PyProject()

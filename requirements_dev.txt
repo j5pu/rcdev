@@ -1,4 +1,0 @@
--r requirements.txt
--r requirements_setup.txt
--r requirements_test.txt
-jupyter
