@@ -814,6 +814,7 @@ from ast import iter_child_nodes as iter_child_nodes
 from ast import iter_fields as ast_iter_fields
 from ast import iter_fields as ast_iter_fields
 from ast import keyword as ASTkeyword
+from ast import Lambda as Lambda
 from ast import Module as ASTModule
 from ast import Name as ASTName
 from ast import NamedExpr as NamedExpr
@@ -1424,7 +1425,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.27'
+__version__ = '0.0.28'
 
 # Protected
 nested_lookup_protected = _nested_lookup
