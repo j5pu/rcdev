@@ -66,21 +66,35 @@ __all__ = (
     # Imports: StdLib
     'ABCMeta',
     'abstractmethod',
+    'ASTalias',
     'AST',
+    'ASTarg',
+    'ASTarguments',
     'AsyncFor',
     'AsyncFunctionDef',
     'AsyncWith',
+    'ASTAttribute',
     'Await',
+    'Call',
     'ClassDef',
+    'Constant',
+    'Expr',
     'FunctionDef',
+    'ASTFunctionType',
     'get_source_segment',
+    'Global',
     'Import',
     'ImportFrom',
     'increment_lineno',
     'ast_iter_fields',
     'iter_child_nodes',
+    'ASTkeyword',
     'Lambda',
+    'ASTModule',
+    'ASTName',
+    'NamedExpr',
     'NodeVisitor',
+    'Nonlocal',
     'astparse',
     'astunparse',
     'astwalk',
@@ -776,21 +790,35 @@ import xml as xml
 # Imports: StdLib
 from abc import ABCMeta as ABCMeta
 from abc import abstractmethod as abstractmethod
+from ast import alias as ASTalias
 from ast import AST as AST
+from ast import arg as ASTarg
+from ast import arguments as ASTarguments
 from ast import AsyncFor as AsyncFor
 from ast import AsyncFunctionDef as AsyncFunctionDef
 from ast import AsyncWith as AsyncWith
+from ast import Attribute as ASTAttribute
 from ast import Await as Await
+from ast import Call as Call
 from ast import ClassDef as ClassDef
+from ast import Constant as Constant
+from ast import Expr as Expr
 from ast import FunctionDef as FunctionDef
+from ast import FunctionType as ASTFunctionType
+from ast import Global as Global
 from ast import get_source_segment as get_source_segment
 from ast import Import as Import
 from ast import ImportFrom as ImportFrom
 from ast import increment_lineno as increment_lineno
 from ast import iter_child_nodes as iter_child_nodes
 from ast import iter_fields as ast_iter_fields
-from ast import Lambda as Lambda
+from ast import iter_fields as ast_iter_fields
+from ast import keyword as ASTkeyword
+from ast import Module as ASTModule
+from ast import Name as ASTName
+from ast import NamedExpr as NamedExpr
 from ast import NodeVisitor as NodeVisitor
+from ast import Nonlocal as Nonlocal
 from ast import parse as astparse
 from ast import unparse as astunparse
 from ast import walk as astwalk
@@ -1396,7 +1424,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.26'
+__version__ = '0.0.27'
 
 # Protected
 nested_lookup_protected = _nested_lookup
