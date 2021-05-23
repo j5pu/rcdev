@@ -45,6 +45,7 @@ __all__ = (
     'random',
     're',
     'reprlib',
+    'shelve',
     'shlex',
     'shutil',
     'socket',
@@ -769,6 +770,7 @@ import pwd as pwd
 import random as random
 import re as re
 import reprlib as reprlib
+import shelve as shelve
 import shlex as shlex
 import shutil as shutil
 import socket as socket
@@ -1425,7 +1427,7 @@ import ujson as ujson
 from typing import Union
 
 # Constants
-__version__ = '0.0.28'
+__version__ = '0.0.29'
 
 # Protected
 nested_lookup_protected = _nested_lookup

@@ -33,6 +33,7 @@ import pwd as pwd
 import random as random
 import re as re
 import reprlib as reprlib
+import shelve as shelve
 import shlex as shlex
 import shutil as shutil
 import socket as socket
