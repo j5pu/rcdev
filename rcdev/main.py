@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.9
 # -*- coding: utf-8 -*-
-"""Dev Main Module. """
+"""RC Dev Main Module. """
 __all__ = (
     # Imports: StdLib Modules
     'abc',

@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/rcdev.iml" filepath="$PROJECT_DIR$/.idea/rcdev.iml" />
       <module fileurl="file://$PROJECT_DIR$/../rclib/.idea/rclib.iml" filepath="$PROJECT_DIR$/../rclib/.idea/rclib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../rctest/.idea/rctest.iml" filepath="$PROJECT_DIR$/../rctest/.idea/rctest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rcutils/.idea/rcutils.iml" filepath="$PROJECT_DIR$/../rcutils/.idea/rcutils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rcvars/.idea/rcvars.iml" filepath="$PROJECT_DIR$/../rcvars/.idea/rcvars.iml" />
     </modules>
   </component>
 </project>

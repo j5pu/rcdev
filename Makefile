@@ -15,6 +15,12 @@ rcdev:
 	@deactivate >/dev/null 2>&1; /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE); \
 /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE)
 
+rcvars: rcdev
+	@cd $${HOME}/rcvars; make
+
+rcutils: rcdev
+	@cd $${HOME}/rcvars; make
+
 rctest: rcdev
 	@cd $${HOME}/rctest; make
 

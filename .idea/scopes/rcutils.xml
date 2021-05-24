@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="rcutils" pattern="file[rcutils]:*/" />
+</component>
