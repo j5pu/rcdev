@@ -18,14 +18,14 @@ rcdev:
 rcvars: rcdev
 	@cd $${HOME}/rcvars; make
 
-rcutils: rcdev
-	@cd $${HOME}/rcvars; make
-
-rctest: rcdev
+rctest: rcvars
 	@cd $${HOME}/rctest; make
+
+rcutils: rctest
+	@cd $${HOME}/rcvars; make
 
 rccmd: rctest
 	@cd $${HOME}/rccmd; make
 
-rclib: rccmd
+rclib: rctest
 	@cd $${HOME}/rclib; make
