@@ -12,11 +12,11 @@ Examples:
     RecursionError: maximum recursion depth exceeded
 """
 __all__ = (
+    'timeit',
     'rich_inspect',
     'rich_print',
 
     '__version__',
-
     'console',
     'cp',
     'debug',
@@ -25,12 +25,11 @@ __all__ = (
     'print_exception',
     'PYTHON_VERSIONS',
 
+    'RcDev',
     'pretty_install',
     'traceback_install',
-    'RcDev',
-    'pyproject',
 )
-
+import timeit as timeit
 from os import environ
 from pathlib import Path
 import colorama
@@ -46,8 +45,8 @@ from rich.console import Console
 from semver import VersionInfo
 from typer import Typer
 
-__version__ = '0.0.30'
-
+__version__ = '0.0.31'
+app = Typer(context_settings=dict(help_option_names=['-h', '--help'], color=True))
 console = Console(color_system='256')
 cp = console.print
 debug = Debug(highlight=True)
@@ -57,13 +56,6 @@ ic = IceCreamDebugger(prefix=str())
 icc = IceCreamDebugger(prefix=str(), includeContext=True)
 print_exception = console.print_exception
 PYTHON_VERSIONS = (VersionInfo(3, 9), VersionInfo(3, 10),)
-
-
-def pretty_install(cons=console, expand=False): return rich.pretty.install(cons, expand_all=expand)
-
-
-def traceback_install(cons=console, extra=5, locs=True): return rich.traceback.install(
-    console=cons, extra_lines=extra, show_locals=locs)
 
 
 class RcDev:
@@ -82,13 +74,17 @@ class RcDev:
         **vars(self) | vars(type(self))).dump(str(self.path / 'pyproject.toml'))
 
 
-app = Typer(context_settings=dict(help_option_names=['-h', '--help'], color=True))
+def pretty_install(cons=console, expand=False): return rich.pretty.install(cons, expand_all=expand)
 
 
 @app.command()
 def pyproject(path: str = str(RcDev.path), pypi: str = RcDev.path.name, script: str = RcDev.path.name):
     """pyproject.toml"""
     RcDev(path=path, pypi=pypi, script=script).pyproject()
+
+
+def traceback_install(cons=console, extra=5, locs=True): return rich.traceback.install(
+    console=cons, extra_lines=extra, show_locals=locs)
 
 
 colorama.init()
