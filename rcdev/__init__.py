@@ -1,12 +1,14 @@
 #!/usr/bin/env python3.9
 # -*- coding: utf-8 -*-
-"""RC Cmd Package."""
-from .main import *
-__all__ = main.__all__
+"""RC Dev Package."""
+from click.exceptions import Exit
+
+from .tools import *
+__all__ = tools.__all__
 
 if __name__ == '__main__':
     try:
-        TyperExit(app())
+        Exit(app())
     except KeyboardInterrupt:
         print('Aborted!')
-        TyperExit()
+        Exit()

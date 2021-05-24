@@ -687,12 +687,10 @@ import sorcery as sorcery
 import stack_data as stack_data
 import ujson as ujson
 
-from typing import ClassVar
 from typing import Final
 from typing import Union
 
 __all__: tuple[str, ...]
-__version__: str
 
 # Protected
 nested_lookup_protected = _nested_lookup
@@ -703,33 +701,10 @@ GitCommandWrapperType = GitRepo.GitCommandWrapperType
 
 
 # Constants
-console: RichConsole
-cp: console.print
-debug: Debug
 DISTRO: LinuxDistribution
-fmic: IceCreamDebugger().format
-fmicc: IceCreamDebugger().format
-ic: IceCreamDebugger
-icc: IceCreamDebugger
 IPvAddress = Union[IPv4Address, IPv6Address]
 KALI: bool
 MONGO_EXCEPTIONS: Final[(gaierror, ConnectionFailure, AutoReconnect, ServerSelectionTimeoutError, ConfigurationError, )]
 plural = inflect.engine().plural
-print_exception: console.print_exception
 PYTHON_VERSIONS: tuple[VersionInfo, VersionInfo]
 UBUNTU: bool
-# Install
-def pretty_install(cons: RichConsole = ..., expand: bool = ...): ...
-def traceback_install(cons: RichConsole = ..., extra: int = ..., locs: bool = ...): ...
-# Class
-class RcDev:
-    path: Union[PathLib, str] = ...
-    pypi: str = ...
-    script: str = ...
-    python: ClassVar[str] = ...
-    requires: list[str, ...] = ...
-    def __init__(self, path: Union[PathLib, str] = ..., pypi: str = ..., script: str = ...) -> None: ...
-    def pyproject(self) -> None: ...
-app: Typer = ...
-@app.command
-def pyproject(path: str = ..., pypi: str = ..., script: str = ...) -> None: ...

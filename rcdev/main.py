@@ -1,16 +1,6 @@
 #!/usr/bin/env python3.9
 # -*- coding: utf-8 -*-
-"""
-Dev Module.
-
-Examples:
-    >>> from copy import deepcopy
-    >>> import environs
-    >>>
-    >>> deepcopy(environs.Env()) # doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-    RecursionError: maximum recursion depth exceeded
-"""
+"""Dev Main Module. """
 __all__ = (
     # Imports: StdLib Modules
     'abc',
@@ -703,35 +693,15 @@ __all__ = (
     'VerboseLogger',
     'yaml',
 
-    # Constants
-    '__version__',
-
     # Aliases
     'GitCommandWrapperType',
 
     # Constants
-    'console',
-    'cp',
-    'debug',
     'DISTRO',
-    'fmic',
-    'fmicc',
-    'ic',
-    'icc',
     'IPvAddress',
     'KALI',
     'MONGO_EXCEPTIONS',
-    'pretty_install',
-    'print_exception',
-    'PYTHON_VERSIONS',
     'UBUNTU',
-
-    # Install
-    'pretty_install',
-    'traceback_install',
-    
-    # Class
-    'RcDev',
 
 )
 
@@ -1426,9 +1396,6 @@ import ujson as ujson
 
 from typing import Union
 
-# Constants
-__version__ = '0.0.29'
-
 # Protected
 nested_lookup_protected = _nested_lookup
 
@@ -1438,70 +1405,15 @@ GitCommandWrapperType = GitRepo.GitCommandWrapperType
 
 
 # Constants
-console = RichConsole(color_system='256')
-cp = console.print
-debug = Debug(highlight=True)
 DISTRO = LinuxDistribution()
-fmic = IceCreamDebugger(prefix=str()).format
-fmicc = IceCreamDebugger(prefix=str(), includeContext=True).format
-ic = IceCreamDebugger(prefix=str())
-icc = IceCreamDebugger(prefix=str(), includeContext=True)
 IPvAddress = Union[IPv4Address, IPv6Address]
 KALI = DISTRO.id() == 'kali'
 MONGO_EXCEPTIONS = (gaierror, ConnectionFailure, AutoReconnect, ServerSelectionTimeoutError, ConfigurationError,)
 plural = inflect.engine().plural
-print_exception = console.print_exception
-PYTHON_VERSIONS = (VersionInfo(3, 9), VersionInfo(3, 10), )
 UBUNTU = DISTRO.id() == 'ubuntu'
 
-
-# Install
-def pretty_install(cons=console, expand=False): return rich_pretty.install(cons, expand_all=expand)
-
-
-def traceback_install(cons=console, extra=5, locs=True): return rich_traceback.install(
-    console=cons, extra_lines=extra, show_locals=locs)
-
-
-# Class
-class RcDev:
-    path = PathLib(__file__).parent.parent
-    python = '3.9'
-
-    def __init__(self, path=path, pypi=None, script=None):
-        path = PathLib(path); self.path = path if path.is_dir() else path.parent
-        self.pypi = pypi if pypi else path.name
-        self.script = script if script else pypi
-        requirements = self.path / 'requirements.txt'
-        self.requires = sorted(set((self.path / 'requirements.txt').read_text().splitlines()))
-        requirements.write_text('\n'.join(self.requires))
-
-    def pyproject(self): Template((PathLib(__file__).parent / 'pyproject.toml.j2').read_text(), autoescape=True).stream(
-        **vars(self) | vars(type(self))).dump(str(self.path / 'pyproject.toml'))
-
-
-# App
-app = Typer(context_settings=dict(help_option_names=['-h', '--help'], color=True))
-
-
-@app.command()
-def pyproject(path: str = str(RcDev.path), pypi: str = RcDev.path.name, script: str = RcDev.path.name):
-    """pyproject.toml"""
-    RcDev(path=path, pypi=pypi, script=script).pyproject()
-
-
 # Init
-colorama.init()
 getLogger(paramiko.__name__).setLevel(NOTSET)
-environ['PYTHONWARNINGS'] = 'ignore'
 pickle_np.register_handlers()
-pretty_install(expand=True)
 struct_configure(logger_factory=LoggerFactory())
 urllib3_disable_warnings()
-
-if __name__ == '__main__':
-    try:
-        TyperExit(app())
-    except KeyboardInterrupt:
-        print('Aborted!')
-        TyperExit()
