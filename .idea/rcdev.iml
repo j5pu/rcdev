@@ -6,6 +6,11 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (rcdev)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="rclib" />
+    <orderEntry type="module" module-name="rcutils" />
+    <orderEntry type="module" module-name="rccmd" />
+    <orderEntry type="module" module-name="rctest" />
+    <orderEntry type="module" module-name="rcvars" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="GOOGLE" />
