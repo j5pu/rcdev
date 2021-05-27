@@ -1413,7 +1413,6 @@ plural = inflect.engine().plural
 UBUNTU = DISTRO.id() == 'ubuntu'
 
 
-
 # Init
 getLogger(paramiko.__name__).setLevel(NOTSET)
 pickle_np.register_handlers()
