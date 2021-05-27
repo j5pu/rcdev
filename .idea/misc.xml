@@ -5,7 +5,7 @@
     <bower-package value="" />
     <bower.json value="" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (rcdev)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (rctest)" project-jdk-type="Python SDK" />
   <component name="RSettings">
     <option name="interpreterPath" value="/usr/local/bin/R" />
   </component>
