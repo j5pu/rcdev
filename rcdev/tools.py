@@ -45,7 +45,7 @@ from rich.console import Console
 from semver import VersionInfo
 from typer import Typer
 
-__version__ = '0.0.55'
+__version__ = '0.0.56'
 app = Typer(context_settings=dict(help_option_names=['-h', '--help'], color=True))
 console = Console(color_system='256')
 cp = console.print
