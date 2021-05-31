@@ -9,6 +9,7 @@ ACTIVATE := $(VENV)/bin/activate
 
 rcdev:
 	@cd $(DIR); test -d $(VENV) || @python3.9 -m venv $(VENV)
+	@cd $(DIR); source $(ACTIVATE); $(VENV)/bin/python3.9 -m pip install --upgrade -q pip; deactivate
 	@cd $(DIR); source $(ACTIVATE); $(VENV)/bin/python3.9 -m pip install --upgrade -q -r $(DIR)requirements.txt; \
 deactivate
 	@cd $(DIR); source $(ACTIVATE); $(VENV)/bin/python3.9 -W ignore -m rcdev.tools; deactivate
