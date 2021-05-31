@@ -1,6 +1,6 @@
 BUMP := patch  # <major|minor|patch>
 all: rclib
-.PHONY: rcdev rctest rccmd rclib all
+.PHONY: rcdev rclib all
 SHELL := $(shell command -v bash)
 DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 PACKAGE := $(shell basename $(DIR))
@@ -18,17 +18,6 @@ flit publish; rm -rf $(DIR)dist/; deactivate
 	@cd $(DIR); deactivate >/dev/null 2>&1; /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE); \
 /usr/local/bin/python3.9 -m pip install --upgrade -q $(PACKAGE)
 
-rcvars: rcdev
-	@cd $${HOME}/rcvars; make
 
-rctest: rcvars
-	@cd $${HOME}/rctest; make
-
-rcutils: rctest
-	@cd $${HOME}/rcvars; make
-
-rccmd: rctest
-	@cd $${HOME}/rccmd; make
-
-rclib: rctest
+rclib: rcdev
 	@cd $${HOME}/rclib; make
